@@ -1,0 +1,15 @@
+POST http://localhost:3000
+Content-Type: application/json
+
+{
+  "ciudad": "Zaragoza",
+  "horaActual": "16:20",
+  "clima": "Nublado",
+  "temperatura": "16°C",
+  "temperaturaMaxima": "18°C",
+  "temperaturaMinima": "12°C"
+}
+
+###
+DELETE http://localhost:3000/Moscú
+Content-Type: application/json

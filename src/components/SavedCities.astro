@@ -1,0 +1,46 @@
+---
+import SavedCityCard from "./SavedCityCard.astro";
+import NoCities from "./NoCities.astro";
+
+interface City {
+	ciudad: string;
+	horaActual: string;
+	clima: string;
+	temperatura: string;
+	temperaturaMaxima: string;
+	temperaturaMinima: string;
+}
+
+let savedCities = [];
+
+try {
+	const response = await fetch("http://localhost:3000/savedCities");
+	if (!response.ok) {
+		throw new Error("Error al cargar las ciudades");
+	}
+	savedCities = await response.json();
+} catch (e) {
+	console.error("Error al obtener las ciudades:", e);
+}
+---
+
+{
+	savedCities.length === 0 ? (
+		<NoCities />
+	) : (
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+			{savedCities.map((city: City) => {
+				return (
+					<SavedCityCard
+						city={city.ciudad}
+						actualTime={city.horaActual}
+						weather={city.clima}
+						temperature={city.temperatura}
+						maxTemperature={city.temperaturaMaxima}
+						minTemperature={city.temperaturaMinima}
+					/>
+				);
+			})}
+		</div>
+	)
+}

@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SavedCities from "../components/SavedCities.astro";
+import SearchModal from "../components/SearchModal.astro";
+---
+
+<Layout>
+	<main
+		class="p-8 m-0 h-screen flex flex-col justify-between items-center gap-10"
+	>
+		<div class="w-full flex flex-col items-center gap-3 max-w-7xl">
+			<h1 class="text-5xl">My cities</h1>
+			<SearchModal />
+		</div>
+
+		<div class="flex-1 h-full w-full max-w-7xl">
+			<SavedCities />
+		</div>
+	</main>
+</Layout>

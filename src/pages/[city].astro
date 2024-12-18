@@ -1,0 +1,58 @@
+---
+const { city } = Astro.params;
+---
+
+<html>
+	<head>
+		<title>Clima en {city}</title>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<h1>Ciudad seleccionada: {city}</h1>
+		<button class="btn-add-fav bg-blue-400 rounded-md p-2"
+			>Agregar a favoritos</button
+		>
+	</body>
+
+	<script>
+		const $btnAddFav = document.querySelector(".btn-add-fav");
+
+		async function addToFav() {
+			const cityName = decodeURIComponent(
+				window.location.pathname.split("/")[1],
+			);
+			console.log(cityName);
+			const cityData = {
+				ciudad: cityName,
+				horaActual: "16:20",
+				clima: "Nublado",
+				temperatura: "16°C",
+				temperaturaMaxima: "18°C",
+				temperaturaMinima: "12°C",
+			};
+
+			try {
+				const res = await fetch("http://localhost:3000", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(cityData),
+				});
+
+				if (res.ok) {
+					const data = await res.json();
+					alert("Ciudad añadida a favoritos");
+					console.log(data);
+				} else {
+					alert("Error al añadir la ciudad a favoritos");
+				}
+			} catch (e) {
+				console.error("Error al hacer la solicitud", e);
+				alert("Error al añadir la ciudad a favoritos");
+			}
+		}
+
+		$btnAddFav?.addEventListener("click", addToFav);
+	</script>
+</html>
