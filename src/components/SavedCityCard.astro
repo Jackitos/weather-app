@@ -43,7 +43,7 @@ const {
 			);
 
 			if (confirmDelete?.toLocaleLowerCase() == "y") {
-				const response = await fetch(`http://localhost:3000/${city}`, {
+				const response = await fetch(`http://localhost:3000/cities/${city}`, {
 					method: "DELETE",
 				});
 				if (response.ok) {

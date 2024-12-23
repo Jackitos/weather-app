@@ -1,197 +1,206 @@
 {
-  "savedCities": [],
-  "allCities": [
-    {
-      "ciudad": "Buenos Aires",
-      "horaActual": "14:30",
-      "clima": "Soleado",
-      "temperatura": "25°C",
-      "temperaturaMaxima": "28°C",
-      "temperaturaMinima": "18°C"
-    },
-    {
-      "ciudad": "Madrid",
-      "horaActual": "19:15",
-      "clima": "Nublado",
-      "temperatura": "20°C",
-      "temperaturaMaxima": "23°C",
-      "temperaturaMinima": "16°C"
-    },
-    {
-      "ciudad": "Nueva York",
-      "horaActual": "12:45",
-      "clima": "Lluvioso",
-      "temperatura": "18°C",
-      "temperaturaMaxima": "20°C",
-      "temperaturaMinima": "15°C"
-    },
-    {
-      "ciudad": "Tokio",
-      "horaActual": "03:30",
-      "clima": "Despejado",
-      "temperatura": "22°C",
-      "temperaturaMaxima": "25°C",
-      "temperaturaMinima": "19°C"
-    },
-    {
-      "ciudad": "París",
-      "horaActual": "18:00",
-      "clima": "Nublado",
-      "temperatura": "19°C",
-      "temperaturaMaxima": "22°C",
-      "temperaturaMinima": "17°C"
-    },
-    {
-      "ciudad": "Sídney",
-      "horaActual": "06:15",
-      "clima": "Soleado",
-      "temperatura": "26°C",
-      "temperaturaMaxima": "30°C",
-      "temperaturaMinima": "21°C"
-    },
-    {
-      "ciudad": "Ciudad de México",
-      "horaActual": "11:00",
-      "clima": "Parcialmente nublado",
-      "temperatura": "24°C",
-      "temperaturaMaxima": "27°C",
-      "temperaturaMinima": "20°C"
-    },
-    {
-      "ciudad": "Londres",
-      "horaActual": "17:45",
-      "clima": "Lluvioso",
-      "temperatura": "15°C",
-      "temperaturaMaxima": "17°C",
-      "temperaturaMinima": "13°C"
-    },
-    {
-      "ciudad": "Roma",
-      "horaActual": "18:30",
-      "clima": "Soleado",
-      "temperatura": "21°C",
-      "temperaturaMaxima": "25°C",
-      "temperaturaMinima": "19°C"
-    },
-    {
-      "ciudad": "Toronto",
-      "horaActual": "13:00",
-      "clima": "Nieve ligera",
-      "temperatura": "-2°C",
-      "temperaturaMaxima": "0°C",
-      "temperaturaMinima": "-5°C"
-    },
-    {
-      "ciudad": "Rio de Janeiro",
-      "horaActual": "14:00",
-      "clima": "Parcialmente soleado",
-      "temperatura": "30°C",
-      "temperaturaMaxima": "33°C",
-      "temperaturaMinima": "26°C"
-    },
-    {
-      "ciudad": "El Cairo",
-      "horaActual": "20:00",
-      "clima": "Despejado",
-      "temperatura": "28°C",
-      "temperaturaMaxima": "30°C",
-      "temperaturaMinima": "22°C"
-    },
-    {
-      "ciudad": "Moscú",
-      "horaActual": "21:45",
-      "clima": "Nevado",
-      "temperatura": "-5°C",
-      "temperaturaMaxima": "-2°C",
-      "temperaturaMinima": "-8°C"
-    },
-    {
-      "ciudad": "Estambul",
-      "horaActual": "20:30",
-      "clima": "Lluvioso",
-      "temperatura": "16°C",
-      "temperaturaMaxima": "18°C",
-      "temperaturaMinima": "14°C"
-    },
-    {
-      "ciudad": "Berlín",
-      "horaActual": "18:45",
-      "clima": "Nublado",
-      "temperatura": "17°C",
-      "temperaturaMaxima": "20°C",
-      "temperaturaMinima": "15°C"
-    },
-    {
-      "ciudad": "Dubái",
-      "horaActual": "22:30",
-      "clima": "Despejado",
-      "temperatura": "32°C",
-      "temperaturaMaxima": "35°C",
-      "temperaturaMinima": "28°C"
-    },
-    {
-      "ciudad": "Seúl",
-      "horaActual": "04:00",
-      "clima": "Parcialmente nublado",
-      "temperatura": "19°C",
-      "temperaturaMaxima": "22°C",
-      "temperaturaMinima": "17°C"
-    },
-    {
-      "ciudad": "Johannesburgo",
-      "horaActual": "14:45",
-      "clima": "Soleado",
-      "temperatura": "26°C",
-      "temperaturaMaxima": "28°C",
-      "temperaturaMinima": "20°C"
-    },
-    {
-      "ciudad": "Lisboa",
-      "horaActual": "19:00",
-      "clima": "Soleado",
-      "temperatura": "23°C",
-      "temperaturaMaxima": "26°C",
-      "temperaturaMinima": "20°C"
-    },
-    {
-      "ciudad": "Bangkok",
-      "horaActual": "06:00",
-      "clima": "Tormenta",
-      "temperatura": "26°C",
-      "temperaturaMaxima": "28°C",
-      "temperaturaMinima": "24°C"
-    },
-    {
-      "ciudad": "Pekín",
-      "horaActual": "03:45",
-      "clima": "Niebla",
-      "temperatura": "12°C",
-      "temperaturaMaxima": "15°C",
-      "temperaturaMinima": "10°C"
-    },
-    {
-      "ciudad": "Atenas",
-      "horaActual": "19:00",
-      "clima": "Soleado",
-      "temperatura": "27°C",
-      "temperaturaMaxima": "30°C",
-      "temperaturaMinima": "23°C"
-    },
-    {
-      "ciudad": "Sao Paulo",
-      "horaActual": "15:15",
-      "clima": "Nublado",
-      "temperatura": "22°C",
-      "temperaturaMaxima": "25°C",
-      "temperaturaMinima": "19°C"
-    },
-    {
-      "ciudad": "Estocolmo",
-      "horaActual": "20:30",
-      "clima": "Lluvia Ligera",
-      "temperatura": "9°C",
-      "temperaturaMaxima": "12°C",
-      "temperaturaMinima": "7°C"
-    }
-  ]
+	"savedCities": [
+		{
+			"ciudad": "Madrid",
+			"horaActual": "16:20",
+			"clima": "Nublado",
+			"temperatura": 16,
+			"temperaturaMaxima": 18,
+			"temperaturaMinima": 12
+		}
+	],
+	"allCities": [
+		{
+			"ciudad": "Buenos Aires",
+			"horaActual": "14:30",
+			"clima": "Soleado",
+			"temperatura": 25,
+			"temperaturaMaxima": 28,
+			"temperaturaMinima": 18
+		},
+		{
+			"ciudad": "Madrid",
+			"horaActual": "19:15",
+			"clima": "Nublado",
+			"temperatura": 20,
+			"temperaturaMaxima": 23,
+			"temperaturaMinima": 16
+		},
+		{
+			"ciudad": "Nueva York",
+			"horaActual": "12:45",
+			"clima": "Lluvioso",
+			"temperatura": 18,
+			"temperaturaMaxima": 20,
+			"temperaturaMinima": 15
+		},
+		{
+			"ciudad": "Tokio",
+			"horaActual": "03:30",
+			"clima": "Despejado",
+			"temperatura": 22,
+			"temperaturaMaxima": 25,
+			"temperaturaMinima": 19
+		},
+		{
+			"ciudad": "París",
+			"horaActual": "18:00",
+			"clima": "Nublado",
+			"temperatura": 19,
+			"temperaturaMaxima": 22,
+			"temperaturaMinima": 17
+		},
+		{
+			"ciudad": "Sídney",
+			"horaActual": "06:15",
+			"clima": "Soleado",
+			"temperatura": 26,
+			"temperaturaMaxima": 30,
+			"temperaturaMinima": 21
+		},
+		{
+			"ciudad": "Ciudad de México",
+			"horaActual": "11:00",
+			"clima": "Parcialmente nublado",
+			"temperatura": 24,
+			"temperaturaMaxima": 27,
+			"temperaturaMinima": 20
+		},
+		{
+			"ciudad": "Londres",
+			"horaActual": "17:45",
+			"clima": "Lluvioso",
+			"temperatura": 15,
+			"temperaturaMaxima": 17,
+			"temperaturaMinima": 13
+		},
+		{
+			"ciudad": "Roma",
+			"horaActual": "18:30",
+			"clima": "Soleado",
+			"temperatura": 21,
+			"temperaturaMaxima": 25,
+			"temperaturaMinima": 19
+		},
+		{
+			"ciudad": "Toronto",
+			"horaActual": "13:00",
+			"clima": "Nieve ligera",
+			"temperatura": -2,
+			"temperaturaMaxima": 0,
+			"temperaturaMinima": -5
+		},
+		{
+			"ciudad": "Rio de Janeiro",
+			"horaActual": "14:00",
+			"clima": "Parcialmente soleado",
+			"temperatura": 30,
+			"temperaturaMaxima": 33,
+			"temperaturaMinima": 26
+		},
+		{
+			"ciudad": "El Cairo",
+			"horaActual": "20:00",
+			"clima": "Despejado",
+			"temperatura": 28,
+			"temperaturaMaxima": 30,
+			"temperaturaMinima": 22
+		},
+		{
+			"ciudad": "Moscú",
+			"horaActual": "21:45",
+			"clima": "Nevado",
+			"temperatura": -5,
+			"temperaturaMaxima": -2,
+			"temperaturaMinima": -8
+		},
+		{
+			"ciudad": "Estambul",
+			"horaActual": "20:30",
+			"clima": "Lluvioso",
+			"temperatura": 16,
+			"temperaturaMaxima": 18,
+			"temperaturaMinima": 14
+		},
+		{
+			"ciudad": "Berlín",
+			"horaActual": "18:45",
+			"clima": "Nublado",
+			"temperatura": 17,
+			"temperaturaMaxima": 20,
+			"temperaturaMinima": 15
+		},
+		{
+			"ciudad": "Dubái",
+			"horaActual": "22:30",
+			"clima": "Despejado",
+			"temperatura": 32,
+			"temperaturaMaxima": 35,
+			"temperaturaMinima": 28
+		},
+		{
+			"ciudad": "Seúl",
+			"horaActual": "04:00",
+			"clima": "Parcialmente nublado",
+			"temperatura": 19,
+			"temperaturaMaxima": 22,
+			"temperaturaMinima": 17
+		},
+		{
+			"ciudad": "Johannesburgo",
+			"horaActual": "14:45",
+			"clima": "Soleado",
+			"temperatura": 26,
+			"temperaturaMaxima": 28,
+			"temperaturaMinima": 20
+		},
+		{
+			"ciudad": "Lisboa",
+			"horaActual": "19:00",
+			"clima": "Soleado",
+			"temperatura": 23,
+			"temperaturaMaxima": 26,
+			"temperaturaMinima": 20
+		},
+		{
+			"ciudad": "Bangkok",
+			"horaActual": "06:00",
+			"clima": "Tormenta",
+			"temperatura": 26,
+			"temperaturaMaxima": 28,
+			"temperaturaMinima": 24
+		},
+		{
+			"ciudad": "Pekín",
+			"horaActual": "03:45",
+			"clima": "Niebla",
+			"temperatura": 12,
+			"temperaturaMaxima": 15,
+			"temperaturaMinima": 10
+		},
+		{
+			"ciudad": "Atenas",
+			"horaActual": "19:00",
+			"clima": "Soleado",
+			"temperatura": 27,
+			"temperaturaMaxima": 30,
+			"temperaturaMinima": 23
+		},
+		{
+			"ciudad": "Sao Paulo",
+			"horaActual": "15:15",
+			"clima": "Nublado",
+			"temperatura": 22,
+			"temperaturaMaxima": 25,
+			"temperaturaMinima": 19
+		},
+		{
+			"ciudad": "Estocolmo",
+			"horaActual": "20:30",
+			"clima": "Lluvia Ligera",
+			"temperatura": 9,
+			"temperaturaMaxima": 12,
+			"temperaturaMinima": 7
+		}
+	]
 }

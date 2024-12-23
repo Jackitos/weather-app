@@ -1,15 +1,24 @@
-POST http://localhost:3000
+GET http://localhost:3000/cities/savedCities
+
+###
+GET http://localhost:3000/cities/allCities
+
+###
+GET http://localhost:3000/cities/allCities/Ciudad%20de%20M%C3%A9xico
+
+###
+POST http://localhost:3000/cities
 Content-Type: application/json
 
 {
   "ciudad": "Zaragoza",
   "horaActual": "16:20",
   "clima": "Nublado",
-  "temperatura": "16°C",
-  "temperaturaMaxima": "18°C",
-  "temperaturaMinima": "12°C"
+  "temperatura": 16,
+  "temperaturaMaxima": 18,
+  "temperaturaMinima": 12
 }
 
 ###
-DELETE http://localhost:3000/Moscú
+DELETE http://localhost:3000/cities/Madrid
 Content-Type: application/json

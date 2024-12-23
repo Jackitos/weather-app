@@ -66,7 +66,7 @@ import SearchCity from "./SearchCity.astro";
 	});
 
 	const searchCities = async (query: string) => {
-		const res = await fetch("http://localhost:3000/allCities");
+		const res = await fetch("http://localhost:3000/cities/allCities");
 		const cities = await res.json();
 
 		if (query.trim() == "") {

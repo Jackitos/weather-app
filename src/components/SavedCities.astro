@@ -6,15 +6,15 @@ interface City {
 	ciudad: string;
 	horaActual: string;
 	clima: string;
-	temperatura: string;
-	temperaturaMaxima: string;
-	temperaturaMinima: string;
+	temperatura: number;
+	temperaturaMaxima: number;
+	temperaturaMinima: number;
 }
 
 let savedCities = [];
 
 try {
-	const response = await fetch("http://localhost:3000/savedCities");
+	const response = await fetch("http://localhost:3000/cities/savedCities");
 	if (!response.ok) {
 		throw new Error("Error al cargar las ciudades");
 	}
@@ -35,9 +35,9 @@ try {
 						city={city.ciudad}
 						actualTime={city.horaActual}
 						weather={city.clima}
-						temperature={city.temperatura}
-						maxTemperature={city.temperaturaMaxima}
-						minTemperature={city.temperaturaMinima}
+						temperature={`${city.temperatura} °C`}
+						maxTemperature={`${city.temperaturaMaxima} °C`}
+						minTemperature={`${city.temperaturaMinima} °C`}
 					/>
 				);
 			})}
