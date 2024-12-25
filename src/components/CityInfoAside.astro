@@ -1,0 +1,36 @@
+<div class="flex flex-col text-white h-full justify-end appear">
+	<p class="text-xl">Buenos Aires City</p>
+	<p class="text-sm text-white/80">
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptates
+		itaque dolore aspernatur corrupti quisquam tempora, placeat architecto
+		tempore explicabo impedit minus rerum! Maxime fugit velit consectetur
+		sapiente enim eligendi.
+	</p>
+</div>
+
+<style>
+	.appear {
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.6s ease,
+			transform 0.6s ease;
+	}
+
+	.appear-active {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>
+
+<script>
+	const elementsToAnimate = document.querySelectorAll(".appear");
+
+	document.addEventListener("DOMContentLoaded", () => {
+		elementsToAnimate.forEach((el) => {
+			setTimeout(() => {
+				el.classList.add("appear-active");
+			}, 200);
+		});
+	});
+</script>

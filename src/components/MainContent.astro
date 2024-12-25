@@ -1,0 +1,28 @@
+---
+import ForecastDayCard from "./ForecastDayCard.astro";
+import HeaderMain from "./HeaderMain.astro";
+---
+
+<HeaderMain />
+<div class="flex flex-col gap-14">
+	<div>
+		<p>Weather Forecast</p>
+		<h1 class="text-5xl max-w-64">Storm with heavy rain</h1>
+	</div>
+
+	<div class="flex flex-row justify-start items-center gap-2 text-sm">
+		<i class="fa-solid fa-cloud"></i>
+		<p>CABA, Friday, Dec 28, 2024, 08:45AM</p>
+	</div>
+
+	<div class="flex flex-col gap-5">
+		<p>5 - day Forecast</p>
+		<div class="flex gap-20">
+			<ForecastDayCard day="Saturday" high="10" low="20" />
+			<ForecastDayCard day="Saturday" high="10" low="20" />
+			<ForecastDayCard day="Saturday" high="10" low="20" />
+			<ForecastDayCard day="Saturday" high="10" low="20" />
+			<ForecastDayCard day="Saturday" high="10" low="20" />
+		</div>
+	</div>
+</div>

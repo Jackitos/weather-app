@@ -1,3 +1,8 @@
+---
+import AsideContent from "../components/AsideContent.astro";
+import MainContent from "../components/MainContent.astro";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,7 +11,7 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta charset="UTF-8" />
-		<title>Weather App</title>
+		<title>Smokly Weather</title>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
@@ -19,16 +24,121 @@
 		</style>
 	</head>
 	<body>
-		<slot />
+		<div id="app" class="h-screen relative">
+			<div class="absolute -z-10 inset-0">
+				<video
+					src="/storm.mp4"
+					autoplay
+					loop
+					muted
+					class="video object-cover w-full h-full"></video>
+			</div>
+			<aside
+				class="[grid-area:aside] flex flex-col items-start p-10 bg-opacity-5 rounded-r-3xl backdrop-blur-md border-r-[.2px] border-gray-300"
+			>
+				<AsideContent />
+			</aside>
+			<main
+				class="[grid-area:main] backdrop-blur-sm flex flex-col items-start p-10 text-white gap-28 appear"
+			>
+				<MainContent />
+			</main>
+		</div>
 	</body>
 </html>
+
+<style>
+	#app {
+		display: grid;
+		grid-template-areas: "aside main";
+		grid-template-columns: 350px 1fr;
+		grid-template-rows: 1fr auto;
+	}
+
+	.hide {
+		opacity: 0; /* Lo hace desaparecer visualmente */
+		transform: scale(0.9); /* Escala un poco el botón */
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease; /* Duración y suavidad */
+		pointer-events: none; /* Deshabilita la interacción */
+	}
+
+	.appear {
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.6s ease,
+			transform 0.6s ease;
+	}
+
+	.appear-active {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	.visible {
+		display: block;
+	}
+</style>
 
 <style is:global>
 	body {
 		font-family: "Funnel Display";
-		color: #f3f3f3;
-		overflow-x: hidden;
-		overflow-y: scroll;
-		background: #004e98;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
 	}
 </style>
+
+<script>
+	const video = document.querySelector(".video") as HTMLVideoElement;
+	const elementsToAnimate = document.querySelectorAll(".appear");
+
+	document.addEventListener("DOMContentLoaded", () => {
+		if (video) {
+			video.playbackRate = 0.7;
+		}
+		elementsToAnimate.forEach((el) => {
+			setTimeout(() => {
+				el.classList.add("appear-active");
+			}, 200);
+		});
+	});
+
+	const geolocalization = navigator.geolocation;
+
+	const position = (pos: any) => {
+		console.log("User Position:", pos);
+	};
+
+	const err = (err: any) => {
+		console.error("Error:", err);
+	};
+
+	const options = {
+		maximumAge: 0,
+		timeout: 10000,
+		enableHighAccuracy: true,
+	};
+
+	document.getElementById("btn-location")?.addEventListener("click", () => {
+		const getLocation = confirm(
+			"Are you sure you want to share your location?",
+		);
+		if (getLocation) {
+			geolocalization.getCurrentPosition(position, err, options);
+			const btnLocation = document.getElementById("btn-location");
+			if (btnLocation) {
+				btnLocation.classList.add("hide");
+				setTimeout(() => {
+					btnLocation.style.visibility = "hidden";
+				}, 300);
+			}
+		}
+	});
+</script>

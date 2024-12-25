@@ -1,0 +1,62 @@
+<div class="appear flex flex-col h-full mt-[51px] w-full">
+	<div
+		class="flex flex-row w-full items-center gap-10 text-white justify-between"
+	>
+		<div class="flex flex-row text-7xl">
+			<p>20</p>
+			<p>°</p>
+		</div>
+		<div class="text-lg">
+			<div class="flex flex-row gap-1">
+				<p>h:</p>
+				<p>27°</p>
+			</div>
+			<div class="flex flex-row gap-1">
+				<p>l:</p>
+				<p>18°</p>
+			</div>
+		</div>
+	</div>
+	<div
+		class="text-white mt-5 flex flex-row gap-1 bg-[rgb(255,255,255,0.03)] p-2 rounded-lg text-lg items-center"
+	>
+		<i class="fa-solid fa-water"></i>
+		<p>Humidity:</p>
+		<p class="text-white/75">69%</p>
+	</div>
+
+	<div
+		class="text-white mt-5 flex flex-row gap-1 bg-[rgb(255,255,255,0.03)] p-2 rounded-lg text-lg items-center"
+	>
+		<i class="fa-solid fa-wind"></i>
+		<p>Wind:</p>
+		<p class="text-white/75">69 meter/sec</p>
+	</div>
+</div>
+
+<style>
+	.appear {
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.6s ease,
+			transform 0.6s ease;
+	}
+
+	.appear-active {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>
+
+<script>
+	const elementsToAnimate = document.querySelectorAll(".appear");
+
+	document.addEventListener("DOMContentLoaded", () => {
+		elementsToAnimate.forEach((el) => {
+			setTimeout(() => {
+				el.classList.add("appear-active");
+			}, 200);
+		});
+	});
+</script>
