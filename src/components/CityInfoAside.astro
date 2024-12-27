@@ -1,5 +1,9 @@
-<div class="flex flex-col text-white h-full justify-end appear">
-	<p class="text-xl">Buenos Aires City</p>
+---
+const { cityName } = Astro.props;
+---
+
+<div class="flex flex-col text-white h-full justify-end">
+	<p class="text-xl">{cityName}</p>
 	<p class="text-sm text-white/80">
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptates
 		itaque dolore aspernatur corrupti quisquam tempora, placeat architecto

@@ -1,19 +1,23 @@
-<div class="appear flex flex-col h-full mt-[51px] w-full">
+---
+const { currentTemp, minTemp, maxTemp, humidity, windSpeed } = Astro.props;
+---
+
+<div class="flex flex-col h-full mt-[51px] w-full">
 	<div
 		class="flex flex-row w-full items-center gap-10 text-white justify-between"
 	>
 		<div class="flex flex-row text-7xl">
-			<p>20</p>
+			<p>{currentTemp}</p>
 			<p>°</p>
 		</div>
 		<div class="text-lg">
 			<div class="flex flex-row gap-1">
 				<p>h:</p>
-				<p>27°</p>
+				<p>{maxTemp}°</p>
 			</div>
 			<div class="flex flex-row gap-1">
 				<p>l:</p>
-				<p>18°</p>
+				<p>{minTemp}°</p>
 			</div>
 		</div>
 	</div>
@@ -22,7 +26,7 @@
 	>
 		<i class="fa-solid fa-water"></i>
 		<p>Humidity:</p>
-		<p class="text-white/75">69%</p>
+		<p class="text-white/75">{humidity}%</p>
 	</div>
 
 	<div
@@ -30,7 +34,7 @@
 	>
 		<i class="fa-solid fa-wind"></i>
 		<p>Wind:</p>
-		<p class="text-white/75">69 meter/sec</p>
+		<p class="text-white/75">{Math.round(windSpeed)} km/h</p>
 	</div>
 </div>
 

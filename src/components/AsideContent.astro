@@ -2,6 +2,9 @@
 import SearchCityInput from "./SearchCityInput.astro";
 import ForecastInfoAside from "./ForecastInfoAside.astro";
 import CityInfoAside from "./CityInfoAside.astro";
+
+const { cityName, currentTemp, minTemp, maxTemp, humidity, windSpeed } =
+	Astro.props;
 ---
 
 <SearchCityInput />
@@ -11,5 +14,52 @@ import CityInfoAside from "./CityInfoAside.astro";
 >
 	Share location
 </button>
-<ForecastInfoAside />
-<CityInfoAside />
+<ForecastInfoAside
+	currentTemp={currentTemp}
+	minTemp={minTemp}
+	maxTemp={maxTemp}
+	humidity={humidity}
+	windSpeed={windSpeed}
+/>
+<CityInfoAside cityName={cityName} />
+
+<script>
+	const geolocalization = navigator.geolocation;
+
+	const position = (pos: any) => {
+		console.log("User Position:", pos);
+	};
+
+	const err = (err: any) => {
+		console.error("Error:", err);
+	};
+
+	const options = {
+		maximumAge: 0,
+		timeout: 10000,
+		enableHighAccuracy: true,
+	};
+
+	// Ocultar botón si ya se aceptó la ubicación
+	document.addEventListener("DOMContentLoaded", () => {
+		const btnLocation = document.getElementById("btn-location");
+		if (localStorage.getItem("locationGranted") === "true" && btnLocation) {
+			btnLocation.style.display = "none";
+		}
+	});
+
+	document.getElementById("btn-location")?.addEventListener("click", () => {
+		const getLocation = confirm(
+			"Are you sure you want to share your location?",
+		);
+		if (getLocation) {
+			geolocalization.getCurrentPosition(position, err, options);
+			const btnLocation = document.getElementById("btn-location");
+			if (btnLocation) {
+				// Guardar en localStorage
+				localStorage.setItem("locationGranted", "true");
+				btnLocation.style.visibility = "hidden";
+			}
+		}
+	});
+</script>

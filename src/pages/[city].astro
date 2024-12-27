@@ -1,13 +1,134 @@
 ---
-import ModernLayout from "../layouts/ModernLayout.astro";
+import Layout from "../layouts/Layout.astro";
+import AsideContent from "../components/AsideContent.astro";
+import MainContent from "../components/MainContent.astro";
 
-const { city } = Astro.params;
+interface Weather {
+	id: number;
+	main: string;
+	description: string;
+	icon: string;
+}
+
+interface MainWeather {
+	temp: number;
+	feels_like: number;
+	temp_min: number;
+	temp_max: number;
+	pressure: number;
+	humidity: number;
+}
+
+interface Wind {
+	speed: number;
+	deg: number;
+	gust: number;
+}
+
+interface ForecastEntry {
+	dt_txt: string;
+	main: MainWeather;
+	weather: Weather[];
+	wind: Wind;
+	clouds: { all: number };
+	visibility: number;
+	pop: number;
+	sys: { pod: string };
+	dt: number;
+}
+
+const decodeCityName = decodeURIComponent(
+	Astro.url.pathname.split("/").pop() || "",
+);
 
 const API_KEY = "803721c11394eb99d05ced8017eb02fe";
 
-const res = await fetch(
-	`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`,
+const currentWeather = await fetch(
+	`https://api.openweathermap.org/data/2.5/weather?q=${decodeCityName}&appid=${API_KEY}&units=metric`,
 ).then((res) => res.json());
+const { timezone, name, sys } = currentWeather;
+const country = sys.country;
+
+const calculateLocalTime = () => {
+	const nowUTC = new Date(Date.now() + new Date().getTimezoneOffset() * 60000);
+	const localTime = new Date(nowUTC.getTime() + timezone * 1000);
+
+	const options: Intl.DateTimeFormatOptions = {
+		weekday: "long",
+		year: "numeric",
+		month: "short",
+		day: "numeric",
+		hour: "2-digit",
+		minute: "2-digit",
+		hour12: false,
+	};
+
+	const formattedLocalTime = `${name}, ${country}, ${localTime.toLocaleString("en-US", options)}`;
+	return formattedLocalTime;
+};
+
+const getCurrentWeather = () => {
+	const { weather, main, wind } = currentWeather;
+	const weatherDescription = weather[0].description;
+	const currentTemp = Math.round(main.temp);
+	const minTemp = Math.round(main.temp_min);
+	const maxTemp = Math.round(main.temp_max);
+	const humidity = main.humidity;
+	const currentWindSpeed = wind.speed * 3.6;
+
+	return {
+		weatherDescription,
+		currentTemp,
+		minTemp,
+		maxTemp,
+		humidity,
+		currentWindSpeed,
+	};
+};
+
+const processForecast = (forecastList: any) => {
+	const groupedByDay: { [key: string]: ForecastEntry[] } = forecastList.reduce(
+		(acc: Record<string, ForecastEntry[]>, item: ForecastEntry) => {
+			const date = item.dt_txt.split(" ")[0];
+			if (!acc[date]) acc[date] = [];
+			acc[date].push(item);
+			return acc;
+		},
+		{} as Record<string, ForecastEntry>,
+	);
+
+	return Object.entries(groupedByDay).map(([date, data]) => {
+		const dayName = new Date(date).toLocaleDateString("en-US", {
+			weekday: "long",
+		});
+		const temps = data.map((entry: ForecastEntry) => entry.main);
+		const high = Math.max(...temps.map((temp: MainWeather) => temp.temp_max));
+		const low = Math.min(...temps.map((temp: MainWeather) => temp.temp_min));
+		return { day: dayName, high: Math.round(high), low: Math.round(low) };
+	});
+};
+
+const forecast = await fetch(
+	`https://api.openweathermap.org/data/2.5/forecast?q=${decodeCityName}&appid=${API_KEY}&units=metric`,
+).then((res) => res.json());
+
+const forecastData = processForecast(forecast.list);
 ---
 
-<ModernLayout />
+<Layout>
+	<AsideContent
+		slot="aside-content"
+		cityName={`${decodeCityName?.toString().charAt(0).toUpperCase()}${decodeCityName?.toString().slice(1)}`}
+		currentTemp={getCurrentWeather().currentTemp}
+		minTemp={getCurrentWeather().minTemp}
+		maxTemp={getCurrentWeather().maxTemp}
+		humidity={getCurrentWeather().humidity}
+		windSpeed={getCurrentWeather().currentWindSpeed}
+	/>
+	<MainContent
+		slot="main-content"
+		formattedLocalTime={calculateLocalTime}
+		briefDescription={`${getCurrentWeather().weatherDescription?.toString().charAt(0).toUpperCase()}${getCurrentWeather().weatherDescription?.toString().slice(1)}`}
+		forecast={forecastData}
+	/>
+</Layout>
