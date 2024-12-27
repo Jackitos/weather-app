@@ -2,7 +2,7 @@
 import ForecastDayCard from "./ForecastDayCard.astro";
 import HeaderMain from "./HeaderMain.astro";
 
-const { formattedLocalTime, briefDescription, forecast } = Astro.props;
+const { formattedLocalTime, briefDescription, forecast = [] } = Astro.props;
 ---
 
 <HeaderMain />
@@ -13,7 +13,7 @@ const { formattedLocalTime, briefDescription, forecast } = Astro.props;
 	</div>
 
 	<div class="flex flex-row justify-start items-center gap-2 text-sm">
-		<i class="fa-solid fa-cloud"></i>
+		<i class="fa-solid fa-city"></i>
 		<p>{formattedLocalTime}</p>
 	</div>
 
@@ -27,11 +27,6 @@ const { formattedLocalTime, briefDescription, forecast } = Astro.props;
 					<ForecastDayCard day={day.day} high={day.high} low={day.low} />
 				))
 			}
-			<!-- <ForecastDayCard day="Saturday" high="10" low="20" />
-			<ForecastDayCard day="Saturday" high="10" low="20" />
-			<ForecastDayCard day="Saturday" high="10" low="20" />
-			<ForecastDayCard day="Saturday" high="10" low="20" />
-			<ForecastDayCard day="Saturday" high="10" low="20" /> -->
 		</div>
 	</div>
 </div>
